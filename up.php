@@ -18,7 +18,7 @@ $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 if ( $httpcode == "" ) { $score = 0; }
-if ( $httpcode == array(200,201,202,203,302,304,305,306,307) ) { $score = 100; }
+if ( $httpcode == array("200","201","202","203","302","304","305","306","307") ) { $score = 100; }
 if ( $httpcode == array(308,400,401,402,403,405,406,407,408,409,410,415) ) { $score = 4; }
 if ( $httpcode == array(500,501,502,503,504,505,506,507,508,510,511) ) { $score = 2; }
 
