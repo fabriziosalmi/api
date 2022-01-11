@@ -3,25 +3,6 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-
-function url_test( $url ) {
-	$timeout = 10;
-	$ch = curl_init();
-	curl_setopt ( $ch, CURLOPT_URL, $url );
-	curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, 1 );
-	curl_setopt ( $ch, CURLOPT_TIMEOUT, $timeout );
-	$http_respond = curl_exec($ch);
-	$http_respond = trim( strip_tags( $http_respond ) );
-	$http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-	if ( ( $http_code == "200" ) || ( $http_code == "201" ) || ( $http_code == "204" ) || ( $http_code == "302" ) || ( $http_code == "304" ) || ( $http_code == "103" ) || ( $http_code == "301" ) ) {
-		return true;
-	} else {
-		// you can return $http_code here if necessary or wanted
-		return false;
-	}
-	curl_close( $ch );
-}
-
 $url = $_GET['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
@@ -30,6 +11,21 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
 } else {
     die("$url is not a valid URL <br>");
 }
+
+die();
+
+function get_http_response_code($domain1) {
+    $headers = get_headers($domain1);
+    return substr($headers[0], 9, 3);
+  }
+  
+  $get_http_response_code = get_http_response_code($domain1);
+  
+  if ( $get_http_response_code == 200 ) {
+    echo "OKAY!";
+  } else {
+    echo "Nokay!";
+  }
 
 if( !url_test( $url ) ) {
 	echo "<br>".$url." ok";
@@ -54,9 +50,9 @@ $url_id = $row["id"];
 $sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '1', '".$score."', '1');";
 
 if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully - [ ".$sql." ]";
+    echo "UPDATE OK    - " . $sql . "<br>";
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "UPDATE ERROR - " . $sql . " - " . $conn->error. "<br>";
   }
   
  
