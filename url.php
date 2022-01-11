@@ -9,22 +9,15 @@ $url_check = parse_url($url);
 
 $scheme = $url_check["scheme"];
 $host = $url_check["host"];
-$path = $url_check["path"];
-$fragment = $url_check["fragment"];
 
 if ( $scheme != "https") {
     die("https required");
 }
 
-if ( $path != "") {
-    die("base url required (path given)");
-}
-
-if ( $fragment != "") {
-    die("base url required (fragment given)");
-}
-
 $url = $scheme."://".$host;
+
+var_dump($url);
+die();
 
 require_once("conf/database.php");
 
