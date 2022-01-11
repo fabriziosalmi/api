@@ -18,7 +18,7 @@ $id_urls[] = "";
 
 while ($row = mysqli_fetch_assoc($result)) {
   var_dump($row["url_id"]);
-  $row["url_id"] .= $id_urls ;
+  $id_urls  .= $row["url_id"];
 }
 
 
