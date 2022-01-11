@@ -11,14 +11,12 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
-$result = $conn->query($sql);
-$rows = $result->fetch_assoc();
-
+$rows = $conn->query($sql)->fetch_array();
 
 
 
 echo "<pre>";
-var_dump($result);
+var_dump($rows);
 
 
 ?>
