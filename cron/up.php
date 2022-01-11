@@ -13,10 +13,8 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM url WHERE url WHERE status = 1;";
 $result = $conn->query($sql)->fetch_assoc();
-// $url_id = $row["id"];
-$url = $row["url"];
 
-while ($row = mysqli_fetch_assoc($result)) {
+foreach ($result  as $row) {
 
   $url_id = $row["id"];
   var_dump($url_id);
