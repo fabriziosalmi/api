@@ -14,12 +14,11 @@ $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
 $sql = "INSERT INTO urls (url) VALUES ('".$url."');";
 
-$result = mysqli_query($sql);
+$result = $conn->query($sql);
 
 
 
 var_dump($result);
-die();
 
 
 
