@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
-$result = mysql_query($sql);
+$result = mysqli_query($sql);
 
 $options = '';
 
