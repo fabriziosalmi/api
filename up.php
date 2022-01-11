@@ -21,11 +21,18 @@ function url_test( $url ) {
 $url = $_POST['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
+var_dump($url);
+
+
 if (filter_var($url, FILTER_VALIDATE_URL)) {
     echo("$url is a valid URL <br>");
 } else {
     die("$url is not a valid URL <br>");
 }
+
+var_dump($url);
+die();
+
 
 if( !url_test( $url ) ) {
 	echo "<br>".$url." ok";
