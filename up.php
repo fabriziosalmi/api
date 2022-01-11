@@ -6,8 +6,6 @@ error_reporting(E_ALL);
 $url = $_GET['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
-var_dump($url);
-
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
 curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
@@ -36,7 +34,8 @@ if ( $httpcode == "503" ) { $score = 1; }
 if ( $httpcode == "504" ) { $score = 1; }
 
 echo "<pre>";
-var_dump($output);
+$response = explode("\n", $output);
+var_dump($response);
 die();
 
 
