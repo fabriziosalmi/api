@@ -11,8 +11,10 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM url WHERE url WHERE status = 1;";
+$sql = "SELECT * FROM url WHERE status = 1;";
 $result = $conn->query($sql);
+
+var_dump($result);
 
 if ($result->num_rows > 0) {
   // output data of each row
