@@ -1,18 +1,14 @@
 <?
 require_once("conf/database.php");
 
-$url = $_POST['url'];
+$url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
-var_dump($url);
+$sql = "INSERT INTO urls (url) VALUES (\'$url\');";
 
-//inserting data order
-$sql = "INSERT INTO urls (url) VALUES ('$url');";
-
-//declare in the order variable
 $result = mysql_query($sql);
-if($result){
-	echo("<br>".$url." added.");
-} else{
-	echo("Error.");
-}
+    if($result){
+	    echo("<br>".$url." added.");
+            } else{
+	    echo("Error.");
+    }
 ?>
