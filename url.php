@@ -45,9 +45,9 @@ if ($conn->connect_error) {
 $sql = "INSERT INTO urls (url,status) VALUES ('".$url."', 0);";
 
 if(mysqli_query($conn, $sql)){
-    echo "ok";
+    echo "<br> ok <br>";
 } else{
-    echo "error: " . mysqli_error($conn);
+    echo "<br> error: " . mysqli_error($conn). "<br>";
 }
  
 mysqli_close($conn);
