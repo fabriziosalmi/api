@@ -12,34 +12,11 @@ if ($conn->connect_error) {
 
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 $result = $conn->query($sql);
-$url_ids = $result->fetch_array();
+$rows = $result->fetch_assoc();
 
+foreach ( $rows as $row) {
+  var_dump($row);
+}
 
-
-echo "<pre>";
-  var_dump($url_ids);
-
-
-die();
-
-$url_id = $row["id"];
-
-$sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '1', '".$score_httpcode."', '1');";
-
-if ($conn->query($sql) === TRUE) {
-    echo "<br>OK " .$sql;
-  } else {
-    echo "UPDATE ERROR - " . $sql . " - " . $conn->error. "<br>";
-  }
-  
-$sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '2', '".$score_namelookup."', '1');";
-
-if ($conn->query($sql) === TRUE) {
-    echo "<br>OK " .$sql;
-  } else {
-    echo "UPDATE ERROR - " . $sql . " - " . $conn->error. "<br>";
-  }
-
-mysqli_close($conn);
 
 ?>
