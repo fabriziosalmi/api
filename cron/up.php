@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
 
 $options = '';
 
-while($row = mysql_fetch_array($result)) {
+while($row = mysqli_fetch_array($result)) {
     $name=$row['id_url'];
     $id_urls .= $name;
 }
