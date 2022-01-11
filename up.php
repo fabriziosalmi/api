@@ -12,28 +12,45 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
     die("$url is not a valid URL <br>");
 }
 
-die();
-
-function get_http_response_code($domain1) {
-    $headers = get_headers($domain1);
+function get_http_response_code($url) {
+    $headers = get_headers($url);
     return substr($headers[0], 9, 3);
   }
   
-  $get_http_response_code = get_http_response_code($domain1);
-  
-  if ( $get_http_response_code == 200 ) {
-    echo "OKAY!";
-  } else {
-    echo "Nokay!";
-  }
+$get_http_response_code = get_http_response_code($url);
 
-if( !url_test( $url ) ) {
-	echo "<br>".$url." ok";
-    $score = 100;
-} else {
-	echo "<br>".$url." error";
-    $score = 1;
-}
+
+
+if ( $get_http_response_code == array(200,201,202,203,302) ) { $score = 100; }
+
+var_dump($get_http_response_code);
+die();
+
+if ( $get_http_response_code == 300 ) { $score = 100; }
+if ( $get_http_response_code == 301 ) { $score = 100; }
+if ( $get_http_response_code == 302 ) { $score = 100; }
+if ( $get_http_response_code == 303 ) { $score = 100; }
+if ( $get_http_response_code == 304 ) { $score = 100; }
+if ( $get_http_response_code == 305 ) { $score = 100; }
+if ( $get_http_response_code == 306 ) { $score = 100; }
+if ( $get_http_response_code == 307 ) { $score = 100; }
+if ( $get_http_response_code == 308 ) { $score = 100; }
+
+if ( $get_http_response_code == 400 ) { $score = 100; }
+if ( $get_http_response_code == 401 ) { $score = 100; }
+if ( $get_http_response_code == 402 ) { $score = 100; }
+if ( $get_http_response_code == 403 ) { $score = 100; }
+if ( $get_http_response_code == 404 ) { $score = 100; }
+if ( $get_http_response_code == 405 ) { $score = 100; }
+if ( $get_http_response_code == 304 ) { $score = 100; }
+if ( $get_http_response_code == 304 ) { $score = 100; }
+if ( $get_http_response_code == 304 ) { $score = 100; }
+
+
+
+
+
+
 
 require_once("conf/database.php");
 
