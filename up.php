@@ -46,17 +46,9 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id FROM urls WHERE url = ".$url." ;";
-$result = $conn->($sql);
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $url_id = $row["id"];
-  }
-} else {
-  die("error: no url id found");
-}
+$sql = "SELECT id FROM urls WHERE url = '".$url."' ;";
+$result = $conn->query($sql);
+$url_id = $result->fetch_assoc();
 
 $sql = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('".$url_id."', '1', '".$score."') WHERE url_id = ".$url_id.";";
 
