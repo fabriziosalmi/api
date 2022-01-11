@@ -12,24 +12,14 @@ $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
 curl_setopt($ch, CURLOPT_NOBODY, false);    // we don't need body
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-curl_setopt($ch, CURLOPT_FAILONERROR, 1); 
 curl_setopt($ch, CURLOPT_TIMEOUT,10);
-
-$curl_errno = curl_errno($ch);
-$curl_error = curl_error($ch);
-if ($curl_errno > 0) {
-        echo "cURL Error ($curl_errno): $curl_error\n";
-        $score = 0;
-} else {
-        echo "<br>".$url. " processing up score..";
-}
-curl_close($ch);
 
 $output = curl_exec($ch);
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 if ( $httpcode == "" ) { $score = 0; }
+if ( $httpcode == NULL ) { $score = 0; }
 if ( $httpcode == "200" ) { $score = 100; }
 if ( $httpcode == "201" ) { $score = 90; }
 if ( $httpcode == "202" ) { $score = 60; }
