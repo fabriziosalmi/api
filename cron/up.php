@@ -12,9 +12,10 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT * FROM url WHERE url WHERE status = 1;";
-$result = $conn->query($sql)->fetch_assoc();
 
-foreach ($result  as $row) {
+$result = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
 
   $url_id = $row["id"];
   var_dump($url_id);
@@ -27,6 +28,6 @@ foreach ($result  as $row) {
     echo "<br> up cycle OK";
   }
 
-}ù
+}
 
 ?>
