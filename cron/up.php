@@ -14,13 +14,15 @@ if ($conn->connect_error) {
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 $result = mysqli_query($conn, $sql);
 
+$id_urls[] = "";
+
 while ($row = mysqli_fetch_assoc($result)) {
   var_dump($row["url_id"]);
-  // $id_urls = $row["url_id"];
+  $id_urls += $row["url_id"];
 }
 
 
-
+var_dump($id_urls);
 
 
 ?>
