@@ -10,16 +10,16 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+$url = $_POST['url'];
+$url = filter_var($url, FILTER_VALIDATE_URL);
+$sql = "INSERT INTO urls (url,status) VALUES ('".$url."', 0);";
 
-$url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
+if(mysqli_query($conn, $sql)){
+    echo "ok";
+} else{
+    echo "error: " . mysqli_error($conn);
+}
+ 
+mysqli_close($conn);
 
-$sql = "INSERT INTO urls (url) VALUES (\'$url\');";
-
-$result = $conn->query($sql);
-
-    if($result){
-	    echo("ok");
-            } else{
-	    echo("error");
-    }
 ?>
