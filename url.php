@@ -4,10 +4,10 @@ require_once("conf/database.php");
 $url = $_POST['url'];
 
 //inserting data order
-$toinsert = "INSERT INTO urls (url) VALUES ('$url')";
+$sql = "INSERT INTO urls (url) VALUES ('.$url.')";
 
 //declare in the order variable
-$result = mysql_query($toinsert);	//order executes
+$result = mysql_query($sql);
 if($result){
 	echo("<br>".$url." added.");
 } else{
