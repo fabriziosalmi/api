@@ -17,7 +17,8 @@ $result = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
 
   echo $row["url_id"];
-  $id_urls =. $row["url_id"];
+  var_dump($id_urls);
+  // $id_urls = $row["url_id"];
 }
 
 
