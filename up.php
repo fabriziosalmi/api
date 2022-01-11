@@ -12,7 +12,19 @@ $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
 curl_setopt($ch, CURLOPT_NOBODY, false);    // we don't need body
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+curl_setopt($ch, CURLOPT_FAILONERROR, 1); 
 curl_setopt($ch, CURLOPT_TIMEOUT,10);
+
+$curl_errno = curl_errno($ch);
+$curl_error = curl_error($ch);
+if ($curl_errno > 0) {
+        echo "cURL Error ($curl_errno): $curl_error\n";
+        $score = 0;
+} else {
+        echo "<br>".$url. " processing up score..";
+}
+curl_close($ch);
+
 $output = curl_exec($ch);
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
@@ -32,17 +44,6 @@ if ( $httpcode == "501" ) { $score = 1; }
 if ( $httpcode == "502" ) { $score = 1; }
 if ( $httpcode == "503" ) { $score = 1; }
 if ( $httpcode == "504" ) { $score = 1; }
-
-var_dump($httpcode);
-var_dump($score);
-die();
-
-
-
-
-
-
-
 
 require_once("conf/database.php");
 
