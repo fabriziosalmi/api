@@ -15,19 +15,16 @@ $sql = "SELECT * FROM url WHERE url WHERE status = 1;";
 
 $result = mysqli_query($conn, $sql);
 
-while ($row = mysqli_fetch_assoc($result)) {
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $url = $row["url"];
+    var_dump($url);
 
-  $url_id = $row["id"];
-  var_dump($url_id);
-  die();
-  $shell_cmd = "/usr/bin/php /var/www/charts.rivoluzioneinformatica.org/api/up.php?url=".$url_id;
-  
-  if (!shell_exec($shell_cmd)) {
-    die("<br>exec failed");
-  } else {
-    echo "<br> up cycle OK";
+
   }
-
+} else {
+  echo "";
 }
 
 ?>
