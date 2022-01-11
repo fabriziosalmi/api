@@ -51,7 +51,7 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $url_id = $row["id"];
 
-$sql = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('".$url_id."', '1', '".$score."') WHERE url_id = ".$url_id.";";
+$sql = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('".$url_id."', '1', '".$score."');";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully - [ ".$sql." ]";
@@ -61,5 +61,5 @@ if ($conn->query($sql) === TRUE) {
   
  
 mysqli_close($conn);
-
+f
 ?>
