@@ -11,8 +11,13 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
-$rows = $conn->query($sql);
-
+$result = $mysqli->query($sql);
+$rows = array();
+while($row = mysql_fetch_array($result))
+    $rows[] = $row;
+foreach($rows as $row){ 
+    var_dump($row);
+}
 
 
 echo "<pre>";
