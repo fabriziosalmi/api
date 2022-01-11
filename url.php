@@ -16,6 +16,7 @@ $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
 $sql = "INSERT INTO urls (url) VALUES (\'$url\');";
 
+var_dump($sql);die();
 
 $result = $conn->query($sql);
 
