@@ -14,7 +14,7 @@ $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
 $sql = "INSERT INTO urls (url) VALUES ('".$url."');";
 
-$result = mysql_query($sql);
+$result = mysqli_query($sql);
 
 
 
