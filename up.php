@@ -12,25 +12,24 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
     die("$url is not a valid URL <br>");
 }
 
-function get_http_response_code($url) {
-    $headers = get_headers($url);
-    return substr($headers[0], 9, 3);
-  }
-  
-$get_http_response_code = get_http_response_code($url);
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
+curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
+curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+curl_setopt($ch, CURLOPT_TIMEOUT,10);
+$output = curl_exec($ch);
+$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
 
-if ( $get_http_response_code = "" ) { 
+if ( $httpcode = "" ) { 
     $score = 0;
-    die("url is unreachable"); }
+    die("<br> ".$url." is unreachable"); 
+}
 
-if ( $get_http_response_code == array(200,201,202,203,302,304,305,306,307) ) { $score = 100; }
-
-if ( $get_http_response_code == array(308,400,401,402,403,405,406,407,408,409,410,415) ) { $score = 4; }
-
-if ( $get_http_response_code == array(500,501,502,503,504,505,506,507,508,510,511) ) { $score = 2; }
-
-if ( $get_http_response_code != array(200,201,202,203,302,304,305,306,307,308,400,401,402,403,405,406,407,408,409,410,415,500,501,502,503,504,505,506,507,508,510,511) ) { $score = 1; }
-
+if ( $httpcode == array(200,201,202,203,302,304,305,306,307) ) { $score = 100; }
+if ( $httpcode == array(308,400,401,402,403,405,406,407,408,409,410,415) ) { $score = 4; }
+if ( $httpcode == array(500,501,502,503,504,505,506,507,508,510,511) ) { $score = 2; }
+if ( $httpcode != array(200,201,202,203,302,304,305,306,307,308,400,401,402,403,405,406,407,408,409,410,415,500,501,502,503,504,505,506,507,508,510,511) ) { $score = 1; }
 
 var_dump($get_http_response_code);
 var_dump($score);
