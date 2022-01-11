@@ -46,20 +46,27 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql_url_id = "SELECT id FROM urls WHERE url = '$url' ;";
-$result_url_id = $conn->query($sql_url_id);
-var_dump($result_url_id );
-die();
+$sql = "SELECT id FROM urls WHERE url = ".$url." ;";
+$result = $conn->($sql);
 
-$sql = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('".$url."', '1', '".$score."') WHERE url_id = ".$url_id.";";
-
-if(mysqli_query($conn, $sql)){
-    echo "<br> ok ".$http_code."<br>";
-} else{
-    echo "<br> error: ".$http_code." - ". mysqli_error($conn). "<br>";
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $url_id = $row["id"];
+  }
+} else {
+  die("error: no url id found");
 }
+
+$sql = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('".$url_id."', '1', '".$score."') WHERE url_id = ".$url_id.";";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully - [ ".$sql." ]";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  
  
 mysqli_close($conn);
-unset($url);
 
 ?>
