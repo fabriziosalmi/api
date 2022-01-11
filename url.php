@@ -15,8 +15,11 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
 }
 
 $parsed_url = parse_url($url);
+
+var_dump($parsed_url);
+
 // Remove any non HTTPS submitted data
-if($parsed_url['scheme'] == 'https'){
+if($parsed_url["scheme"] == "https"){
     echo("$url is a valid HTTPS URL");
 } else {
     die("$url is not a valid HTTPS URL");
