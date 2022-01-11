@@ -10,9 +10,14 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
+$url = $_POST['url'];
+$url = filter_var($url, FILTER_VALIDATE_URL);
+
+var_dump($url);
 
 $sql = "INSERT INTO urls (url) VALUES ('".$url."');";
+
+var_dump($sql);
 
 if(mysqli_query($conn, $sql)){
     echo "Records inserted successfully.";
