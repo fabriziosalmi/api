@@ -11,9 +11,8 @@ curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
 curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 curl_setopt($ch, CURLOPT_TIMEOUT,10);
-
-curl_setopt($ch, CURLINFO_NAMELOOKUP_TIME);
-curl_setopt($ch, CURLINFO_CONNECT_TIME);
+curl_setopt($ch, CURLINFO_NAMELOOKUP_TIME, true);
+curl_setopt($ch, CURLINFO_CONNECT_TIME, true);
 
 $output = curl_exec($ch);
 
