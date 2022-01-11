@@ -19,32 +19,23 @@ function get_http_response_code($url) {
   
 $get_http_response_code = get_http_response_code($url);
 
+if ( $get_http_response_code = "" ) { 
+    $score = 0;
+    die("url is unreachable"); }
 
+if ( $get_http_response_code == array(200,201,202,203,302,304,305,306,307) ) { $score = 100; }
 
-if ( $get_http_response_code == array(200,201,202,203,302) ) { $score = 100; }
+if ( $get_http_response_code == array(308,400,401,402,403,405,406,407,408,409,410,415) ) { $score = 4; }
+
+if ( $get_http_response_code == array(500,501,502,503,504,505,506,507,508,510,511) ) { $score = 2; }
+
+if ( $get_http_response_code != array(200,201,202,203,302,304,305,306,307,308,400,401,402,403,405,406,407,408,409,410,415,500,501,502,503,504,505,506,507,508,510,511) ) { $score = 1; }
+
 
 var_dump($get_http_response_code);
+var_dump($score);
 die();
 
-if ( $get_http_response_code == 300 ) { $score = 100; }
-if ( $get_http_response_code == 301 ) { $score = 100; }
-if ( $get_http_response_code == 302 ) { $score = 100; }
-if ( $get_http_response_code == 303 ) { $score = 100; }
-if ( $get_http_response_code == 304 ) { $score = 100; }
-if ( $get_http_response_code == 305 ) { $score = 100; }
-if ( $get_http_response_code == 306 ) { $score = 100; }
-if ( $get_http_response_code == 307 ) { $score = 100; }
-if ( $get_http_response_code == 308 ) { $score = 100; }
-
-if ( $get_http_response_code == 400 ) { $score = 100; }
-if ( $get_http_response_code == 401 ) { $score = 100; }
-if ( $get_http_response_code == 402 ) { $score = 100; }
-if ( $get_http_response_code == 403 ) { $score = 100; }
-if ( $get_http_response_code == 404 ) { $score = 100; }
-if ( $get_http_response_code == 405 ) { $score = 100; }
-if ( $get_http_response_code == 304 ) { $score = 100; }
-if ( $get_http_response_code == 304 ) { $score = 100; }
-if ( $get_http_response_code == 304 ) { $score = 100; }
 
 
 
