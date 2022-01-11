@@ -7,9 +7,6 @@ $url = $_POST['url'];
 $url = filter_var($url, FILTER_VALIDATE_URL);
 $url_check = parse_url($url);
 
-var_dump($url_check );
-die();
-
 $scheme = $url_check["scheme"];
 $host = $url_check["host"];
 $path = $url_check["path"];
