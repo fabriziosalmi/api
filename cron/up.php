@@ -11,13 +11,15 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT url FROM urls WHERE status = 1;";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT * FROM url WHERE url WHERE status = 1;";
+$result = $conn->query($sql)->fetch_assoc();
+// $url_id = $row["id"];
+$url = $row["url"];
 
 while ($row = mysqli_fetch_assoc($result)) {
 
   $url_id = $row["id"];
-  print_r($url_id);
+  var_dump($url_id);
   die();
   $shell_cmd = "/usr/bin/php /var/www/charts.rivoluzioneinformatica.org/api/up.php?url=".$url_id;
   
@@ -27,6 +29,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "<br> up cycle OK";
   }
 
-}
+}ù
 
 ?>
