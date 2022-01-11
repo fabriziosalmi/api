@@ -46,7 +46,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql_url_id = "SELECT id FROM urls WHERE url = ".$url." ;";
+$sql_url_id = "SELECT id FROM urls WHERE url = '$url' ;";
 $result_url_id = $conn->query($sql_url_id);
 var_dump($result_url_id );
 die();
