@@ -4,8 +4,6 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 $url = $_POST['url'];
-
-// Remove all illegal characters from a url
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (filter_var($url, FILTER_VALIDATE_URL)) {
@@ -15,6 +13,7 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
 }
 
 $parsed_url = parse_url($url);
+
 $scheme = $parsed_url["scheme"];
 
 // Remove any non HTTPS submitted data
