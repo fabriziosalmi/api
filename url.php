@@ -7,7 +7,7 @@ $sql = "INSERT INTO urls (url) VALUES (\'$url\');";
 
 $result = mysql_query($sql);
     if($result){
-	    echo("<br>".$url." added.");
+	    echo($url." added.");
             } else{
 	    echo("Error.");
     }
