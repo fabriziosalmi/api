@@ -35,6 +35,7 @@ if ( $httpcode == "502" ) { $score = 1; }
 if ( $httpcode == "503" ) { $score = 1; }
 if ( $httpcode == "504" ) { $score = 1; }
 
+echo "<pre>";
 var_dump($output);
 die();
 
