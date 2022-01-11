@@ -14,18 +14,12 @@ $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
 $sql = "INSERT INTO urls (url) VALUES ('".$url."');";
 
-$result = $conn->query($sql);
+if(mysqli_query($conn, $sql)){
+    echo "Records inserted successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+ 
+mysqli_close($link);
 
-
-
-var_dump($result);
-
-
-
-
-    if($result){
-	    echo("ok");
-            } else{
-	    echo("error");
-    }
 ?>
