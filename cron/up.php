@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT * FROM url WHERE status = 1;";
-$result = $conn->query($sql);
+$result = $conn->mysqli_query($sql);
 
 var_dump($result);
 
