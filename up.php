@@ -50,7 +50,7 @@ $url_id = $row["id"];
 $sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '1', '".$score."', '1');";
 
 if ($conn->query($sql) === TRUE) {
-    echo "UPDATE OK    - "$url. " - " . $sql . "<br>";
+    echo "OK";
   } else {
     echo "UPDATE ERROR - " . $sql . " - " . $conn->error. "<br>";
   }
