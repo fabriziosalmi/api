@@ -11,17 +11,21 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
-$result = $mysqli_query($sql);
-$rows = array();
-while($row = mysql_fetch_array($result))
-    $rows[] = $row;
-foreach($rows as $row){ 
-    var_dump($row);
+$result = mysql_query($sql);
+
+$options = '';
+
+while($row = mysql_fetch_array($result)) {
+    $name=$row['id_url'];
+    $id_urls .= $name;
 }
 
 
+
+
+
 echo "<pre>";
-var_dump($rows);
+var_dump($id_urls);
 
 
 ?>
