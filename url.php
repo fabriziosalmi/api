@@ -24,6 +24,12 @@ if($scheme == "https"){
     die("$url is not a valid HTTPS URL");
 }
 
+// Force base url monitoring, not any url
+$url_info = parse_url($url);
+$url_host = $url_info['host'];
+// to improve by far 
+$url = "https://".$url_host;
+
 // Clean path and fragment (to improve)
 if (isset($parsed_url["path"])) {
     $parsed_url["path"] = "";
