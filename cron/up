@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 $sql = "SELECT DISTINCT url FROM urls;";
 $result = $conn->query($sql);
 
-$urls = $result->fetch_array()){
+$urls = $result->fetch_array();
 
 var_dump($urls);
 die();
