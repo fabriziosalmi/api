@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT DISTINCT url_id, monitor_id FROM monitor_link WHERE status = 1;";
+$sql = "SELECT DISTINCT url_id FROM monitor_link WHERE monitor_id = 1 status = 1;";
 $result = $conn->query($sql);
 $url_ids = $result->fetch_array();
 
