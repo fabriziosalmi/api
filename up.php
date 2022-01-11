@@ -18,15 +18,22 @@ $output = curl_exec($ch);
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
-$codes_a = array("200","201");
-$codes_b = array("301","302","304","307","308");
-$codes_c = array("500","501","502","503","504");
-$codes_d = array("", NULL);
-
-if (in_array($httpcode , $codes_a)) { $score = 100; }
-if (in_array($httpcode , $codes_b)) { $score = 50; }
-if (in_array($httpcode , $codes_c)) { $score = 1; }
-if (in_array($httpcode , $codes_d)) { $score = 0; }
+if ( $httpcode == "" ) { $score = 0; }
+if ( $httpcode == NULL ) { $score = 0; }
+if ( $httpcode == "200" ) { $score = 100; }
+if ( $httpcode == "201" ) { $score = 90; }
+if ( $httpcode == "202" ) { $score = 60; }
+if ( $httpcode == "204" ) { $score = 5; }
+if ( $httpcode == "301" ) { $score = 40; }
+if ( $httpcode == "302" ) { $score = 60; }
+if ( $httpcode == "304" ) { $score = 70; }
+if ( $httpcode == "307" ) { $score = 50; }
+if ( $httpcode == "308" ) { $score = 40; }
+if ( $httpcode == "500" ) { $score = 1; }
+if ( $httpcode == "501" ) { $score = 1; }
+if ( $httpcode == "502" ) { $score = 1; }
+if ( $httpcode == "503" ) { $score = 1; }
+if ( $httpcode == "504" ) { $score = 1; }
 
 require_once("conf/database.php");
 
