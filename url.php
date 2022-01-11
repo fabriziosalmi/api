@@ -54,5 +54,5 @@ mysqli_close($conn);
 
 unset($url);
 
-echo '<p><a href="">add url</a></p>';
+echo '<p><a href="add.html">add url</a></p>';
 ?>
