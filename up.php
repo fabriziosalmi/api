@@ -35,6 +35,11 @@ if ( $httpcode == "502" ) { $score = 1; }
 if ( $httpcode == "503" ) { $score = 1; }
 if ( $httpcode == "504" ) { $score = 1; }
 
+var_dump($output);
+die();
+
+
+
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
