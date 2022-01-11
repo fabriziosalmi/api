@@ -53,4 +53,6 @@ if(mysqli_query($conn, $sql)){
 mysqli_close($conn);
 
 unset($url);
+
+echo '<p><a href="">add url</a></p>';
 ?>
