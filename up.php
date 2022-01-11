@@ -12,8 +12,14 @@ curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 curl_setopt($ch, CURLOPT_TIMEOUT,10);
 
+curl_setopt($ch, CURLINFO_NAMELOOKUP_TIME);
+curl_setopt($ch, CURLINFO_CONNECT_TIME);
+
 $output = curl_exec($ch);
+
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$namelookup_time = curl_getinfo($ch, CURLINFO_NAMELOOKUP_TIME);
+
 curl_close($ch);
 
 if ( $httpcode == "" ) { $score = 0; }
@@ -34,8 +40,7 @@ if ( $httpcode == "503" ) { $score = 1; }
 if ( $httpcode == "504" ) { $score = 1; }
 
 echo "<pre>";
-$response = explode("\n", $output);
-var_dump($response);
+var_dump($namelookup_time );
 die();
 
 
