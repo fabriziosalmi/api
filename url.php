@@ -9,9 +9,10 @@ var_dump($sql);
 
 
 $result = mysql_query($sql);
+
     if($result){
-	    echo($url." added.");
+	    echo("ok");
             } else{
-	    echo("Error.");
+	    echo("error");
     }
 ?>
