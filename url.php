@@ -10,6 +10,8 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+die();
+
 
 $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
