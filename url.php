@@ -15,7 +15,7 @@ $url = filter_var($url, FILTER_VALIDATE_URL);
 
 var_dump($url);
 
-$sql = "INSERT INTO urls (url) VALUES ('".$url."');";
+$sql = "INSERT INTO urls (url,status) VALUES ('".$url."', 0);";
 
 var_dump($sql);
 
