@@ -18,9 +18,20 @@ $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 if ( $httpcode == "" ) { $score = 0; }
-if ( $httpcode == array("200","201","202","203","302","304","305","306","307") ) { $score = 100; }
-if ( $httpcode == array(308,400,401,402,403,405,406,407,408,409,410,415) ) { $score = 4; }
-if ( $httpcode == array(500,501,502,503,504,505,506,507,508,510,511) ) { $score = 2; }
+if ( $httpcode == "200" ) { $score = 100; }
+if ( $httpcode == "201" ) { $score = 90; }
+if ( $httpcode == "202" ) { $score = 60; }
+if ( $httpcode == "204" ) { $score = 5; }
+if ( $httpcode == "301" ) { $score = 40; }
+if ( $httpcode == "302" ) { $score = 60; }
+if ( $httpcode == "304" ) { $score = 70; }
+if ( $httpcode == "307" ) { $score = 50; }
+if ( $httpcode == "308" ) { $score = 40; }
+if ( $httpcode == "500" ) { $score = 1; }
+if ( $httpcode == "501" ) { $score = 1; }
+if ( $httpcode == "502" ) { $score = 1; }
+if ( $httpcode == "503" ) { $score = 1; }
+if ( $httpcode == "504" ) { $score = 1; }
 
 var_dump($httpcode);
 var_dump($score);
