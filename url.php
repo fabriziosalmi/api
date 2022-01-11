@@ -14,12 +14,15 @@ if ($conn->connect_error) {
 
 $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
-var_dump($url);
-die();
-
 $sql = "INSERT INTO urls (url) VALUES (\'$url\');";
 
+
 $result = $conn->query($sql);
+
+
+var_dump($result);
+die();
+
 
     if($result){
 	    echo("ok");
