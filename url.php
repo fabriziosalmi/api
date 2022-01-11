@@ -4,17 +4,23 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 $url = $_POST['url'];
-$url = filter_var($url, FILTER_VALIDATE_URL);
-$url_check = parse_url($url);
 
-$scheme = $url_check["scheme"];
-$host = $url_check["host"];
+// Remove all illegal characters from a url
+$url = filter_var($url, FILTER_SANITIZE_URL);
 
-if ( $scheme != "https") {
-    die("https required");
+if (filter_var($url, FILTER_VALIDATE_URL)) {
+    echo("$url is a valid URL");
+} else {
+    die("$url is not a valid URL");
 }
 
-$url = $scheme."://".$host;
+// Remove any non HTTPS submitted data
+if($url['scheme'] == 'https'){
+    echo("$url is a valid HTTPS URL");
+} else {
+    die("$url is not a valid HTTPS URL");
+}
+
 
 var_dump($url);
 die();
