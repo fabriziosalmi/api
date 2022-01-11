@@ -10,20 +10,11 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-
-
 $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
 $sql = "INSERT INTO urls (url) VALUES ('".$url."');";
 
-var_dump($sql);die();
-
 $result = $conn->query($sql);
-
-
-var_dump($result);
-die();
-
 
     if($result){
 	    echo("ok");
