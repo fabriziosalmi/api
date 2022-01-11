@@ -12,8 +12,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "SELECT * FROM url WHERE url WHERE status = 1;";
-
-$result = mysqli_query($conn, $sql);
+$conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
