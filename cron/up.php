@@ -15,12 +15,9 @@ $result = mysqli_query($conn, $sql);
 
 var_dump($result);
 
-$options = '';
-
-while($row = mysqli_fetch_array($result)) {
-    $name=$row['id_url'];
-    var_dump($name);
-    $id_urls .= $name;
+while ($row = mysql_fetch_assoc($result)) {
+  echo "<pre>";
+  echo $row["url_id"];
 }
 
 
