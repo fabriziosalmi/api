@@ -18,21 +18,14 @@ function url_test( $url ) {
 	curl_close( $ch );
 }
 
-$url = $_POST['url'];
+$url = $_GET['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
-
-var_dump($url);
-
 
 if (filter_var($url, FILTER_VALIDATE_URL)) {
     echo("$url is a valid URL <br>");
 } else {
     die("$url is not a valid URL <br>");
 }
-
-var_dump($url);
-die();
-
 
 if( !url_test( $url ) ) {
 	echo "<br>".$url." ok";
@@ -56,9 +49,9 @@ $url_id = $result_url_id->fetch_assoc();
 $sql = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('".$url."', '1', '".$score."') WHERE url_id = ".$url_id.";";
 
 if(mysqli_query($conn, $sql)){
-    echo "<br> ok <br>";
+    echo "<br> ok ".$http_code."<br>";
 } else{
-    echo "<br> error: " . mysqli_error($conn). "<br>";
+    echo "<br> error: ".$http_code." - ". mysqli_error($conn). "<br>";
 }
  
 mysqli_close($conn);
