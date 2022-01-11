@@ -16,6 +16,14 @@ $sql = "INSERT INTO urls (url) VALUES ('".$url."');";
 
 $result = $conn->query($sql);
 
+
+
+var_dump($result);
+die();
+
+
+
+
     if($result){
 	    echo("ok");
             } else{
