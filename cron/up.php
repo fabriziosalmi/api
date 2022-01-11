@@ -2,6 +2,7 @@
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
+echo "<pre>";
 
 require_once("../conf/database.php");
 
@@ -13,12 +14,10 @@ if ($conn->connect_error) {
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 $result = mysqli_query($conn, $sql);
 
-var_dump($result);
-
 while ($row = mysqli_fetch_assoc($result)) {
-  echo "<pre>";
+
   echo $row["url_id"];
-  $id_urls .= $row["url_id"];
+  $id_urls =. $row["url_id"];
 }
 
 
