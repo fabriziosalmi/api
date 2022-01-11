@@ -12,17 +12,12 @@ if ($conn->connect_error) {
 
 $url = $_POST['url'];
 $url = filter_var($url, FILTER_VALIDATE_URL);
-
-var_dump($url);
-
 $sql = "INSERT INTO urls (url,status) VALUES ('".$url."', 0);";
 
-var_dump($sql);
-
 if(mysqli_query($conn, $sql)){
-    echo "Records inserted successfully.";
+    echo "ok";
 } else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+    echo "error: " . mysqli_error($conn);
 }
  
 mysqli_close($conn);
