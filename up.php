@@ -48,7 +48,8 @@ if ($conn->connect_error) {
 
 $sql_url_id = "SELECT id FROM urls WHERE url = ".$url." ;";
 $result_url_id = $conn->query($sql_url_id);
-$url_id = $result_url_id->fetch_assoc();
+var_dump($result_url_id );
+die();
 
 $sql = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('".$url."', '1', '".$score."') WHERE url_id = ".$url_id.";";
 
