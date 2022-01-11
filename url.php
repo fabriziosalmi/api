@@ -9,15 +9,15 @@ $url = $_POST['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (filter_var($url, FILTER_VALIDATE_URL)) {
-    echo("$url is a valid URL");
+    echo("$url is a valid URL <br>");
 } else {
-    die("$url is not a valid URL");
+    die("$url is not a valid URL <br>");
 }
 
 $parsed_url = parse_url($url);
 $scheme = $parsed_url["scheme"];
-
-print_r($scheme);
+$path = $parsed_url["path"];
+$fragment = $parsed_url["fragment"];
 
 // Remove any non HTTPS submitted data
 if($scheme == "https"){
@@ -26,9 +26,16 @@ if($scheme == "https"){
     die("$url is not a valid HTTPS URL");
 }
 
+// Clean path and fragment (to improve)
+if (isset($path)) {
+    $path = "";
+    unset($path);
+}
 
-var_dump($url);
-die();
+if (isset($fragment)) {
+    $fragment = "";
+    unset($fragment);
+}
 
 require_once("conf/database.php");
 
@@ -47,4 +54,5 @@ if(mysqli_query($conn, $sql)){
  
 mysqli_close($conn);
 
+unset $url;
 ?>
