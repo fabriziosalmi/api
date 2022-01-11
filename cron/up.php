@@ -14,7 +14,7 @@ $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 $result = $conn->query($sql);
 $rows = $result->fetch_assoc();
 
-var_dump($rows);
+var_dump($result);
 
 
 ?>
