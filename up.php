@@ -6,12 +6,6 @@ error_reporting(E_ALL);
 $url = $_GET['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
-if (filter_var($url, FILTER_VALIDATE_URL)) {
-    echo("$url is a valid URL <br>");
-} else {
-    die("$url is not a valid URL <br>");
-}
-
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
 curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
