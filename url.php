@@ -16,8 +16,6 @@ if (filter_var($url, FILTER_VALIDATE_URL)) {
 
 $parsed_url = parse_url($url);
 $scheme = $parsed_url["scheme"];
-$path = $parsed_url["path"];
-$fragment = $parsed_url["fragment"];
 
 // Remove any non HTTPS submitted data
 if($scheme == "https"){
@@ -27,14 +25,14 @@ if($scheme == "https"){
 }
 
 // Clean path and fragment (to improve)
-if (isset($path)) {
-    $path = "";
-    unset($path);
+if (isset($parsed_url["path"])) {
+    $parsed_url["path"] = "";
+    unset($parsed_url["path"]);
 }
 
-if (isset($fragment)) {
-    $fragment = "";
-    unset($fragment);
+if (isset($parsed_url["fragment"])) {
+    $parsed_url["fragment"] = "";
+    unset($parsed_url["fragment"]);
 }
 
 require_once("conf/database.php");
