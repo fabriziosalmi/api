@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
 
-$sql = "INSERT INTO urls (url) VALUES (\\".$url."\\);";
+$sql = "INSERT INTO urls (url) VALUES ('".$url."');";
 
 var_dump($sql);die();
 
