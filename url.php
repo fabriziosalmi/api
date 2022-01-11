@@ -1,4 +1,4 @@
-<?
+<?php
 require_once("conf/database.php");
 
 $url = filter_var($_POST['url'], FILTER_VALIDATE_URL);
