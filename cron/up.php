@@ -14,8 +14,6 @@ if ($conn->connect_error) {
 $sql = "SELECT url FROM urls WHERE status = 1;";
 $result = mysqli_query($conn, $sql);
 
-$id_urls[] = "";
-
 while ($row = mysqli_fetch_assoc($result)) {
 
   $url_id = $row["id"];
@@ -24,10 +22,8 @@ while ($row = mysqli_fetch_assoc($result)) {
   $shell_cmd = "/usr/bin/php /var/www/charts.rivoluzioneinformatica.org/api/up.php?url=".$url_id;
   
   if (!shell_exec($shell_cmd)) {
-
     die("<br>exec failed");
   } else {
-
     echo "<br> up cycle OK";
   }
 
