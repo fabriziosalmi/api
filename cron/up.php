@@ -14,6 +14,9 @@ $sql = "SELECT DISTINCT url_id, monitor_id FROM monitor_link WHERE status = 1;";
 $result = $conn->query($sql);
 $url_ids = $result->fetch_array();
 
+
+
+echo "<pre>";
   var_dump($url_ids);
 
 
