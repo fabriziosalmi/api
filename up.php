@@ -79,7 +79,7 @@ $url_id = $row["id"];
 $sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '1', '".$score_httpcode."', '1');";
 
 if ($conn->query($sql) === TRUE) {
-    echo "OK";
+    echo "<br>OK " .$sql;
   } else {
     echo "UPDATE ERROR - " . $sql . " - " . $conn->error. "<br>";
   }
@@ -87,7 +87,7 @@ if ($conn->query($sql) === TRUE) {
 $sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '2', '".$score_namelookup."', '1');";
 
 if ($conn->query($sql) === TRUE) {
-    echo "OK";
+    echo "<br>OK " .$sql;
   } else {
     echo "UPDATE ERROR - " . $sql . " - " . $conn->error. "<br>";
   }
