@@ -14,6 +14,10 @@ $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 $result = $conn->query($sql);
 $rows = $result->fetch_assoc();
 
+
+
+
+echo "<pre>";
 var_dump($result);
 
 
