@@ -18,14 +18,12 @@ var_dump($result);
 while ($row = mysqli_fetch_assoc($result)) {
   echo "<pre>";
   echo $row["url_id"];
+  $id_urls .= $row["url_id"];
 }
 
 
 
 
-
-echo "<pre>";
 var_dump($id_urls);
-
 
 ?>
