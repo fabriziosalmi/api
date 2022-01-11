@@ -13,6 +13,8 @@ if ($conn->connect_error) {
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 $result = mysqli_query($conn, $sql);
 
+var_dump($result);
+
 $options = '';
 
 while($row = mysqli_fetch_array($result)) {
