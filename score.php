@@ -38,21 +38,25 @@ $result1 = $conn->query($sql_param);
 if ($result1->num_rows > 0) { while($row = $result1->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
 $url_score = $score;
 
-var_dump($url_score);
+print_r("<br>up: ".$url_score."<br>");
 
-die();
-// sum scores
-$sum = $score_up + $score_dns;
 
-// improve with sql select result
+$sql_param2 = "SELECT score FROM checks WHERE url_id = ".$url_id." AND monitor_id = 2 ORDER BY id DESC LIMIT 1;";
+$result2 = $conn->query($sql_param2);
+if ($result2->num_rows > 0) { while($row = $result2->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
+$dns_score = $score;
+
+print_r("<br>dns: ".$dns_score."<br>");
+
+// sum scores - to improve with sql select result
+$sum = $url_score  + $dns_score;
 $values=2;
-$url_score = floatval($sum) / floatval($values);
+$score = floatval($sum) / floatval($values);
 
-
-$sql2 = "INSERT INTO scores (url_id, score) VALUES ('$url_id', '$url_score')";
+$sql2 = "INSERT INTO scores (url_id, score) VALUES ('$url_id', '$score')";
 
 if ($conn->query($sql2) === TRUE) {
-  echo "<br> New record - ".$sql2." ";
+  echo "<br> url_id: ".$url_id." - Score: ".$score." ";
 } else {
   echo "<br> Error: " . $sql2 . "<br>" . $conn->error;
 }
