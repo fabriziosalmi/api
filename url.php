@@ -1,5 +1,4 @@
 <?php
-require_once("conf/logging.php");
 
 // get url
 $url = $_POST['url'];

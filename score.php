@@ -1,5 +1,4 @@
 <?php
-require_once("conf/logging.php");
 
 if (PHP_SAPI === 'cli')
 {
