@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 
 $sql = "SELECT id FROM url WHERE monitor_id = 1 AND status = 1;";
 
-if ($result = $mysqli -> query($sql)) {
+if ($result = $conn -> query($sql)) {
   // Get field information for all fields
   while ($fieldinfo = $result -> fetch_field()) {
     printf("id: %s\n", $fieldinfo -> id);
