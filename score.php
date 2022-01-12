@@ -30,7 +30,7 @@ if ($conn->connect_error) {
 $sql = "SELECT id FROM urls WHERE url = \"$url\";";
 $result = $conn->query($sql);
 
-$row = $result->fetch_assoc());
+$row = $result->fetch_assoc();
 $url_id = $row["id"];
 
 
