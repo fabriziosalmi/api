@@ -27,10 +27,8 @@ foreach ($array as $url_id_to_monitor) {
     $url = $conn->query($sql_url)->fetch_row()[0];
   
     // monitor
-    $shell_cmd = '/usr/bin/php -f /var/www/charts.rivoluzioneinformatica.org/api/up.php \"url='.$url.'\"';
-    var_dump($shell_cmd);
-    shell_exec($shell_cmd);
-
+    $api = "https://charts.rivoluzioneinformatica.org/api/up.php?url=";
+    file_get_contents($api.$url);
 }
 
 $conn->close();
