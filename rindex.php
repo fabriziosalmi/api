@@ -15,7 +15,7 @@ $sql_count_urls = "SELECT COUNT(id) FROM urls;";
 $result_0 = $conn->query($sql_count_urls);
 $urls_count = $result_0->fetch_assoc()["COUNT(id)"];
 
-print_r($urls_count);
+print_r("<br> urls: ".$urls_count);
 
 $sql_param_1 = "SELECT AVG(score) FROM scores WHERE url_id IN(SELECT DISTINCT url_id FROM urls) ORDER BY id DESC LIMIT ".$urls_count.";";
 $result_1 = $conn->query($sql_param_1);
@@ -25,7 +25,7 @@ $RI_score = floatval($result_1["AVG(score)"]);
 $sql1 = "INSERT INTO rindex (score) VALUES ('".$RI_score."')";
 
 if ($conn->query($sql1) === TRUE) {
-  echo "New record created successfully - [ ".$sql1." ]";
+  echo "<br> OK RIndex: ".$sql1." ";
 } else {
-  echo "Error: " . $sql1 . "<br>" . $conn->error;
+  echo "<br> Error: " . $sql1 . "<br>" . $conn->error;
 }
