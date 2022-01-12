@@ -16,7 +16,7 @@ $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 if ($result = $conn -> query($sql)) {
   // Get field information for all fields
   while ($fieldinfo = $result -> fetch_field()) {
-    printf("id: %s\n", $fieldinfo -> name);
+    var_dump($fieldinfo -> name);
 
   }
   $result -> free_result();
