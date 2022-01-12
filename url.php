@@ -1,8 +1,6 @@
 <?php
 require_once("conf/logging.php");
-// require_once("conf/security.php");
 
-// get url
 $url = $_POST['url'];
 
 //url sanitizer 
