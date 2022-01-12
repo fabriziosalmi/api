@@ -4,11 +4,20 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 $url = $_GET['url'];
+
+//url sanitizer 
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
+//url validator 
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
+  echo("<br> $url is valid"); 
+} else { 
+  echo("<br> $url is invalid"); 
+} 
+
 $ch = curl_init($url);
-curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
-curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
+curl_setopt($ch, CURLOPT_HEADER, true); 
+curl_setopt($ch, CURLOPT_NOBODY, true);    
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 curl_setopt($ch, CURLOPT_TIMEOUT,10);
 curl_setopt($ch, CURLINFO_NAMELOOKUP_TIME, true);
