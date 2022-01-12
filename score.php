@@ -31,10 +31,7 @@ $sql = "SELECT id FROM urls WHERE url = \"$url\";";
 $result = $conn->query($sql);
 $url_id = $result->fetch_assoc()["id"];
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-}
+print_r("<br>url id: ".$url_id."<br>");
 
 $sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
 $result1 = $conn->query($sql_param);
