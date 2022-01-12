@@ -22,8 +22,14 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 
 require_once("conf/database.php");
 
-$sql = "SELECT * FROM urls WHERE url = \"$url\";";
-$row = $conn->query($sql)->fetch_assoc();
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id FROM urls WHERE url = '".$url."' ;";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 $url_id = $row["id"];
 
 $sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
