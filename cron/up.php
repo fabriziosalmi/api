@@ -23,18 +23,16 @@ print_r($array);
 
 foreach ($array as $url_id_to_monitor) {
 
-    $sql_url = "SELECT url FROM urls WHERE url_id = ".$url_id_to_monitor.";"; 
+    $sql_url = "SELECT url FROM urls WHERE id = ".$url_id_to_monitor.";"; 
     $result1 = $conn->query($sql_url);
     var_dump($result1);
 
 }
 
-
-    
+   
 
     die();
-    $row1 = $result1->fetch_assoc();
-    $url = $row["url"];
+
     $shell_cmd = "/usr/bin/wget -q -O https://charts.rivoluzioneinformatica.org/api/up.php?url=".$url."";
     shell_exec($shell_cmd);
 
