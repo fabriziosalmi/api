@@ -13,15 +13,12 @@ if ($conn->connect_error) {
 
 $sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 
-if ($result = $conn -> query($sql)) {
-  // Get field information for all fields
-  while ($fieldinfo = $result -> fetch_field()) {
-    var_dump($fieldinfo);
-
-  }
-  $result -> free_result();
+$data = array(); 
+while ($row = mysqli_fetch_array($result)) {
+    array_push($data, $row["url_id"]);
 }
 
-
+var_dump($row["url_id"]);
+var_dump($data);
 
 ?>
