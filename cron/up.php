@@ -38,6 +38,6 @@ foreach ($array as $url_id_to_monitor) {
     $shell_cmd = "/usr/bin/wget -q -O https://charts.rivoluzioneinformatica.org/api/up.php?url=".$url."";
     shell_exec($shell_cmd);
 
-}
+
 
 ?>
