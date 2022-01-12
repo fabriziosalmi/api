@@ -33,7 +33,7 @@ $url_id = $result->fetch_assoc()["id"];
 
 print_r("<br>url id: ".$url_id."<br>");
 
-$sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
+$sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND monitor_id = 1 ORDER BY id DESC LIMIT 1;";
 $result1 = $conn->query($sql_param);
 
 var_dump($result1);
@@ -44,7 +44,6 @@ $sum = $score_up + $score_dns;
 
 // improve with sql select result
 $values=2;
-
 $url_score = floatval($sum) / floatval($values);
 
 
