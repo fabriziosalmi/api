@@ -19,25 +19,21 @@ foreach ($stmt->get_result() as $row)
 {
     $array[] = $row['url_id'];
 }
-print_r($array);
 
 foreach ($array as $url_id_to_monitor) {
 
     $sql_url = "SELECT url FROM urls WHERE id = ".$url_id_to_monitor.";"; 
     $result1 = $conn->query($sql_url);
-    var_dump($conn->query($sql_url)->fetch_row()[0]);
+    $url = $conn->query($sql_url)->fetch_row()[0];
   
-
+    // monitor
+    $shell_cmd = "/usr/bin/wget -q -O https://charts.rivoluzioneinformatica.org/api/up.php?url=".$url."";
+    var_dump($shell_cmd);
+    shell_exec($shell_cmd);
 
 }
 
-   
-
-    die();
-
-    $shell_cmd = "/usr/bin/wget -q -O https://charts.rivoluzioneinformatica.org/api/up.php?url=".$url."";
-    shell_exec($shell_cmd);
-
-
+$conn->close();
+print_r("<br> monitor done.");
 
 ?>
