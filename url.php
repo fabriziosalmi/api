@@ -3,16 +3,6 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-$origin = $_SERVER["HTTP_ORIGIN"];
-$referrer = $_SERVER["HTTP_REFERER"];
-
-if ( $origin == "https://charts.rivoluzioneinformatica.org") { 
-    echo("<br> $origin is valid ORIGIN"); 
-} else { 
-    echo("<br> $origin is invalid ORIGIN");
-    die("<br> error: origin $origin");
-} 
-
 // get url
 $url = $_POST['url'];
 
@@ -28,7 +18,6 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 } 
 
 $parsed_url = parse_url($url);
-
 $scheme = $parsed_url["scheme"];
 
 // Remove any non HTTPS submitted data
@@ -55,6 +44,16 @@ if (isset($parsed_url["fragment"])) {
     $parsed_url["fragment"] = "";
     unset($parsed_url["fragment"]);
 }
+
+$origin = $_SERVER["HTTP_ORIGIN"];
+$referrer = $_SERVER["HTTP_REFERER"];
+
+if ( $origin == $url) { 
+    echo("<br> $origin is valid ORIGIN"); 
+} else { 
+    echo("<br> $origin is invalid ORIGIN");
+    die("<br> error: origin $origin url $url");
+} 
 
 require_once("conf/database.php");
 
