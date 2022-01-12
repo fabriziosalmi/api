@@ -37,10 +37,6 @@ if ( $w3c_valid = "0") {
   $w3c_score = 100;
 }
 
-
-
-die();
-
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -53,7 +49,7 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $url_id = $row["id"];
 
-$sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '3', '".$score_httpcode."', '1');";
+$sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '3', '".$w3c_score."', '1');";
 
 if ($conn->query($sql) === TRUE) {
     echo "<br>OK " .$sql;
