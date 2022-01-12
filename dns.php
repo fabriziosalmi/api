@@ -1,7 +1,6 @@
 <?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+require_once("plugins/logging.php");
+// require_once("conf/security.php");
 
 $url = $_GET['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
