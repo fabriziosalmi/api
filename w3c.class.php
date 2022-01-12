@@ -38,6 +38,7 @@ class W3cValidate{
      * @param string $url The URL that will be used in the test.
      */
     public function W3cValidate($url){
+        $url = urlencode($url);
         // Make sure the URL has http in front of it
         $this->url = $url;
     }
