@@ -32,7 +32,7 @@ $result = $conn->query($sql);
 $url_id = $result->fetch_assoc()["id"];
 
 
-$sql_param = "SELECT score FROM checks WHERE url_id = '$url_id' AND param_id = 1 ORDER BY id DESC LIMIT 1;";
+$sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
 $result1 = $conn->query($sql_param);
 
 var_dump($result1);
