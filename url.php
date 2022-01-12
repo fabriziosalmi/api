@@ -3,10 +3,24 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-echo "<pre>";
-var_dump($_POST);
-var_dump($_SERVER);
+$origin = $_SERVER["HTTP_ORIGIN"];
+$referrer = $_SERVER["HTTP_REFERER"];
 
+if ( $origin != "https://charts.rivoluzioneinformatica.org") { 
+    echo("<br> $origin is valid"); 
+} else { 
+    echo("<br> $origin is invalid");
+    die("<br> error: origin");
+} 
+
+if ( $referrer != "https://charts.rivoluzioneinformatica.org") { 
+    echo("<br> $referrer is valid"); 
+} else { 
+    echo("<br> $referrer is invalid");
+    die("<br> error: referrer");
+} 
+
+// get url
 $url = $_POST['url'];
 
 //url sanitizer 
