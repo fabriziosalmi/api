@@ -32,18 +32,12 @@ $result = $conn->query($sql);
 $url_id = $result->fetch_assoc()["id"];
 
 
-$sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
+$sql_param = "SELECT score FROM checks WHERE url_id = '$url_id' AND param_id = 1 ORDER BY id DESC LIMIT 1;";
 $result1 = $conn->query($sql_param);
 
 var_dump($result1);
 
-
-
-$sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 2 ORDER BY id DESC LIMIT 1;";
-$result = $conn->query($sql_param);
-if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
-$score_dns = $score;
-
+die();
 // sum scores
 $sum = $score_up + $score_dns;
 
