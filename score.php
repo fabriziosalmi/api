@@ -22,7 +22,7 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 
 require_once("conf/database.php");
 
-$sql = "SELECT * FROM url WHERE url = \"$url\";";
+$sql = "SELECT * FROM urls WHERE url = \"$url\";";
 $row = $conn->query($sql)->fetch_assoc();
 $url_id = $row["id"];
 
