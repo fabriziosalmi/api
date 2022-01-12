@@ -11,14 +11,14 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
-
-$data = array(); 
-while ($row = mysqli_fetch_array($result)) {
-    array_push($data, $row["url_id"]);
+$stmt = $mysqli->prepare("SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;");
+$stmt->execute();
+$array = [];
+foreach ($stmt->get_result() as $row)
+{
+    $array[] = $row['url_id'];
 }
+print_r($array);
 
-var_dump($row["url_id"]);
-var_dump($data);
 
 ?>
