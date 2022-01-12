@@ -3,6 +3,8 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+
+
 $url = $_GET['url'];
 
 //url sanitizer 
@@ -14,6 +16,7 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 } else { 
   echo("<br> $url is invalid"); 
 } 
+
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_HEADER, true); 
