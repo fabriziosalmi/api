@@ -8,15 +8,12 @@ if (PHP_SAPI === 'cli')
 } 
 
 $url = $_GET['url'];
-
-//url sanitizer 
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
-//url validator 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
   echo("<br> $url is valid"); 
 } else { 
-  echo("<br> $url is invalid"); 
+  die("<br> $url is invalid"); 
 } 
 
 
