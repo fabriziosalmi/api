@@ -13,17 +13,17 @@ $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
 
-  echo "<br> ".$url." is valid"; 
+  echo "<br> ".$url." is valid<br> "; 
 
 } else { 
 
-  die("<br> $url is invalid"); 
+  die("<br> $url is invalid<br> "); 
 
 } 
 
 require_once("w3c.class.php");
 $w3c = new W3cValidate($url);
-echo $w3c->getValidation();
+echo "W3C " . $w3c->getValidation();
 
 die();
 
