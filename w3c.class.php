@@ -50,7 +50,7 @@ class W3cValidate{
      * @return integer The number of errors, or -1 if an error was encountered.
      */
     public function getValidation(){    
-        $w3cvalidator = strip_tags(file_get_contents("http://validator.w3.org/check?uri=".$this->url));
+        $w3cvalidator = strip_tags(file_get_contents("https://validator.w3.org/check?uri=".$this->url));
         // Validator response is null
         if ( $w3cvalidator == '' ) {
             $this->result = -1;
