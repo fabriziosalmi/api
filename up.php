@@ -1,5 +1,6 @@
 <?php
 require_once("conf/logging.php");
+require_once("util.php");
 
 if (PHP_SAPI === 'cli')
 {
