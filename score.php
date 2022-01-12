@@ -57,7 +57,7 @@ $sql2 = "INSERT INTO scores (url_id, score) VALUES ('$url_id', '$score')";
 
 if ($conn->query($sql2) === TRUE) {
   echo "<br> url_id: ".$url_id;
-  echo "Score: ".$score;
+  echo "<br> Score: ".$score;
 } else {
   echo "<br> Error: " . $sql2 . " - " . $conn->error;
 }
