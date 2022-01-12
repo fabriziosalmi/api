@@ -39,8 +39,6 @@ class W3cValidate{
      */
     public function W3cValidate($url){
         // Make sure the URL has http in front of it
-        // $url = str_replace("https://","",$url);
-        // $url = "https://".$url;
         $this->url = $url;
     }
     
