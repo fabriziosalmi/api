@@ -1,6 +1,5 @@
 <?php
 require_once("../plugins/logging.php");
-// require_once("conf/security.php");
 require_once("../conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);

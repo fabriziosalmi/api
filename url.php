@@ -20,7 +20,7 @@ $scheme = $parsed_url["scheme"];
 
 // Remove any non HTTPS submitted data
 if($scheme == "https"){
-    echo "<br> ".$url." is a valid HTTPS URL");
+    echo "<br> ".$url." is a valid HTTPS URL";
 } else {
     die("<br> $url is not a valid HTTPS URL");
 }
