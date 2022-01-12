@@ -23,10 +23,9 @@ print_r($array);
 
 foreach ($array as $url_id_to_monitor) {
 
-    $stmt1 = $conn->prepare("SELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';");
-    $stmt1->execute();
-    $out = $stmt->get_result();
-    var_dump($out);
+    $name = $mysqli->query("SSELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';")->fetch_object()->name; 
+    vae_dump($name);
+    
 
     die();
     $row1 = $result1->fetch_assoc();
