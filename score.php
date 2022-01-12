@@ -32,7 +32,7 @@ $result = $conn->query($sql);
 
 $url_id = $result->fetch_assoc()["id"];
 var_dump($url_id);
-
+echo $url_id;
 
 
 die();
