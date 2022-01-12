@@ -20,9 +20,8 @@ $scheme = $parsed_url["scheme"];
 
 // Remove any non HTTPS submitted data
 if($scheme == "https"){
-    echo("<br> $url is a valid HTTPS URL");
+    echo "<br> ".$url." is a valid HTTPS URL");
 } else {
-    echo("<br> $url is not a valid HTTPS URL"); 
     die("<br> $url is not a valid HTTPS URL");
 }
 
@@ -47,10 +46,9 @@ $origin = $_SERVER["HTTP_ORIGIN"];
 $referrer = $_SERVER["HTTP_REFERER"];
 
 if ( $origin == "https://charts.rivoluzioneinformatica.org") { 
-    echo("<br> $origin is valid ORIGIN"); 
+    echo "<br>".$origin." is valid ORIGIN"; 
 } else { 
-    echo("<br> $origin is invalid ORIGIN");
-    die("<br> error: origin $origin url $url");
+    die("<br> error: origin ".$origin." url ".$url);
 } 
 
 require_once("conf/database.php");
