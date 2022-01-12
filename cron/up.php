@@ -11,7 +11,8 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $mysqli->prepare("SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;");
+
+$stmt = $conn->prepare("SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;");
 $stmt->execute();
 $array = [];
 foreach ($stmt->get_result() as $row)
