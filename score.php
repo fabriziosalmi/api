@@ -33,12 +33,11 @@ $url_id = $result->fetch_assoc()["id"];
 
 
 $sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
-$result = $conn->query($sql_param);
+$result1 = $conn->query($sql_param);
+
+var_dump($result1);
 
 
-
-if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
-$score_up = $score;
 
 $sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 2 ORDER BY id DESC LIMIT 1;";
 $result = $conn->query($sql_param);
