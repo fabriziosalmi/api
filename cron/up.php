@@ -11,21 +11,17 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM url WHERE status = 1;";
-$result = $conn->mysqli_query($sql);
+$sql = "SELECT id FROM url WHERE monitor_id = 1 AND status = 1;";
 
-var_dump($result);
-
-if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $url = $row["url"];
-    var_dump($url);
-
+if ($result = $mysqli -> query($sql)) {
+  // Get field information for all fields
+  while ($fieldinfo = $result -> fetch_field()) {
+    printf("id: %s\n", $fieldinfo -> id);
 
   }
-} else {
-  echo "";
+  $result -> free_result();
 }
+
+
 
 ?>
