@@ -20,6 +20,8 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
   echo("<br> $url is invalid"); 
 } 
 
+require_once("conf/database.php");
+
 $sql = "SELECT * FROM url WHERE url = \"$url\";";
 $row = $conn->query($sql)->fetch_assoc();
 $url_id = $row["id"];
