@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id FROM url WHERE monitor_id = 1 AND status = 1;";
+$sql = "SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;";
 
 if ($result = $conn -> query($sql)) {
   // Get field information for all fields
