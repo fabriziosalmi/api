@@ -1,5 +1,5 @@
 <?php
-require_once("conf/sentry.php");
+// require_once("conf/sentry.php");
 
 if (PHP_SAPI === 'cli')
 {

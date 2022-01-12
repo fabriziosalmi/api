@@ -1,5 +1,5 @@
 <?php
-require_once("conf/sentry.php");
+// require_once("conf/sentry.php");
 
 // get url
 $url = $_POST['url'];
