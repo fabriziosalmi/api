@@ -16,6 +16,7 @@ foreach ($stmt->get_result() as $row)
 
 foreach ($array as $url_id_to_monitor) {
 
+    set_time_limit(30);
     $sql_url = "SELECT url FROM urls WHERE id = ".$url_id_to_monitor.";"; 
     $result1 = $conn->query($sql_url);
     $url = $conn->query($sql_url)->fetch_row()[0];

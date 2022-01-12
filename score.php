@@ -42,9 +42,16 @@ $dns_score = $score;
 
 print_r("<br>dns: ".$dns_score."<br>");
 
+$sql_param3 = "SELECT score FROM checks WHERE url_id = ".$url_id." AND monitor_id = 3 ORDER BY id DESC LIMIT 1;";
+$result3 = $conn->query($sql_param3);
+if ($result3->num_rows > 0) { while($row = $result3->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
+$w3c_score = $score;
+
+print_r("<br>dns: ".$dns_score."<br>");
+
 // sum scores - to improve with sql select result
-$sum = $url_score + $dns_score;
-$values=2;
+$sum = $url_score + $dns_score + $w3c_score;
+$values=3;
 $score = floatval($sum) / floatval($values);
 
 $sql2 = "INSERT INTO scores (url_id, score) VALUES ('$url_id', '$score')";
