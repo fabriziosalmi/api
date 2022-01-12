@@ -6,18 +6,14 @@ error_reporting(E_ALL);
 $origin = $_SERVER["HTTP_ORIGIN"];
 $referrer = $_SERVER["HTTP_REFERER"];
 
-var_dump($origin);
-var_dump($referrer);
-die();
-
-if ( $origin != "https://charts.rivoluzioneinformatica.org") { 
+if ( $origin == "https://charts.rivoluzioneinformatica.org") { 
     echo("<br> $origin is valid"); 
 } else { 
     echo("<br> $origin is invalid");
     die("<br> error: origin");
 } 
 
-if ( $referrer != "https://charts.rivoluzioneinformatica.org") { 
+if ( $referrer == "https://charts.rivoluzioneinformatica.org") { 
     echo("<br> $referrer is valid"); 
 } else { 
     echo("<br> $referrer is invalid");
