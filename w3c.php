@@ -1,5 +1,7 @@
 <?php
 
+require_once("w3c.class.php");
+
 if (PHP_SAPI === 'cli')
 
 {
@@ -23,7 +25,20 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 
 require_once("w3c.class.php");
 $w3c = new W3cValidate($url);
-echo "W3C " . $w3c->getValidation();
+$w3c_valid = $w3c->getValidation()
+echo "W3C " . $w3c_valid;
+
+if ( $w3c_valid = "-1") { 
+  print_r("score 0");
+  $w3c_score = 0;
+}
+
+if ( $w3c_valid = "0") { 
+  print_r("score 100");
+  $w3c_score = 100;
+}
+
+
 
 die();
 
