@@ -10,10 +10,12 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+
 $sql_count_urls = "SELECT COUNT(id) FROM url;";
 $result_0 = $conn->query($sql_count_urls);
-$urls_count = $result_0->fetch_assoc();
-$urls_count = $urls_count["COUNT(id)"];
+$urls_count = $result_0->fetch_assoc()["COUNT(id)"];
+
+print_r($urls_count);
 
 $sql_param_1 = "SELECT AVG(score) FROM scores WHERE url_id IN(SELECT DISTINCT url_id FROM urls) ORDER BY id DESC LIMIT ".$urls_count.";";
 $result_1 = $conn->query($sql_param_1);
