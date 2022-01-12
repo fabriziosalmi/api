@@ -13,13 +13,6 @@ if ( $origin == "https://charts.rivoluzioneinformatica.org") {
     die("<br> error: origin");
 } 
 
-if ( $referrer == "https://charts.rivoluzioneinformatica.org") { 
-    echo("<br> $referrer is valid"); 
-} else { 
-    echo("<br> $referrer is invalid");
-    die("<br> error: referrer");
-} 
-
 // get url
 $url = $_POST['url'];
 
