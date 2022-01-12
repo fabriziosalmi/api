@@ -7,10 +7,10 @@ $origin = $_SERVER["HTTP_ORIGIN"];
 $referrer = $_SERVER["HTTP_REFERER"];
 
 if ( $origin == "https://charts.rivoluzioneinformatica.org") { 
-    echo("<br> $origin is valid"); 
+    echo("<br> $origin is valid ORIGIN"); 
 } else { 
-    echo("<br> $origin is invalid");
-    die("<br> error: origin");
+    echo("<br> $origin is invalid ORIGIN");
+    die("<br> error: origin $origin");
 } 
 
 // get url
@@ -21,9 +21,10 @@ $url = filter_var($url, FILTER_SANITIZE_URL);
 
 //url validator 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
-  echo("<br> $url is valid"); 
+  echo("<br> $url is valid URL"); 
 } else { 
-  echo("<br> $url is invalid"); 
+  echo("<br> $url is invalid URL"); 
+  die("<br> error: URL");
 } 
 
 $parsed_url = parse_url($url);
@@ -32,9 +33,10 @@ $scheme = $parsed_url["scheme"];
 
 // Remove any non HTTPS submitted data
 if($scheme == "https"){
-    echo("$url is a valid HTTPS URL");
+    echo("<br> $url is a valid HTTPS URL");
 } else {
-    die("$url is not a valid HTTPS URL");
+    echo("<br> $url is not a valid HTTPS URL"); 
+    die("<br> $url is not a valid HTTPS URL");
 }
 
 // Force base url monitoring, not any url
