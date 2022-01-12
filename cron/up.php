@@ -26,8 +26,8 @@ foreach ($array as $url_id_to_monitor) {
     $sql_url = "SELECT url FROM urls WHERE id = ".$url_id_to_monitor.";"; 
     $result1 = $conn->query($sql_url);
     $row1 = $result1->fetch_assoc();
-    $url = $row["url"];
-    var_dump($url);
+    var_dump($row);
+
 
 }
 
