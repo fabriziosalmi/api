@@ -35,8 +35,10 @@ print_r("<br>url id: ".$url_id."<br>");
 
 $sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND monitor_id = 1 ORDER BY id DESC LIMIT 1;";
 $result1 = $conn->query($sql_param);
+if ($result1->num_rows > 0) { while($row = $result1->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
+$url_score = $score;
 
-var_dump($result1);
+var_dump($url_score);
 
 die();
 // sum scores
