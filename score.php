@@ -1,0 +1,53 @@
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+if (PHP_SAPI === 'cli')
+{
+    parse_str(implode('&', array_slice($argv, 1)), $_GET);
+} 
+
+$url = $_GET['url'];
+
+//url sanitizer 
+$url = filter_var($url, FILTER_SANITIZE_URL);
+
+//url validator 
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
+  echo("<br> $url is valid"); 
+} else { 
+  echo("<br> $url is invalid"); 
+} 
+
+$sql = "SELECT * FROM url WHERE url = \"$url\";";
+$row = $conn->query($sql)->fetch_assoc();
+$url_id = $row["id"];
+
+$sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
+$result = $conn->query($sql_param);
+if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
+$score_up = $score;
+
+$sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 2 ORDER BY id DESC LIMIT 1;";
+$result = $conn->query($sql_param);
+if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) { $score = $row["score"]; } } else { $score = $row["score"]; }
+$score_dns = $score;
+
+// sum scores
+$sum = $score_up + $score_dns;
+
+// improve with sql select result
+$values=2;
+
+$url_score = floatval($sum) / floatval($values);
+
+
+$sql2 = "INSERT INTO scores (url_id, score) VALUES ('$url_id', '$url_score')";
+
+if ($conn->query($sql2) === TRUE) {
+  echo "<br> New record - ".$sql2." ";
+} else {
+  echo "<br> Error: " . $sql2 . "<br>" . $conn->error;
+}
+
