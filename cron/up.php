@@ -23,8 +23,7 @@ print_r($array);
 
 foreach ($array as $url_id_to_monitor) {
 
-    var_dump($url_id_to_monitor);
-    $stmt1 = $conn->prepare("SELECT url_id FROM monitor_link WHERE monitor_id = 1 AND status = 1;");
+    $stmt1 = $conn->prepare("SELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';");
     $stmt1->execute();
     $out = $stmt->get_result();
     var_dump($out);
