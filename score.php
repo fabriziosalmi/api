@@ -30,6 +30,12 @@ if ($conn->connect_error) {
 $sql = "SELECT id FROM urls WHERE url = \"$url\";";
 $result = $conn->query($sql);
 
+$url_id = $result->fetch_assoc()["id"];
+var_dump($url_id);
+
+
+
+die();
 var_dump($result->fetch_assoc()["id"]);
 
 $row = $result->fetch_assoc();
