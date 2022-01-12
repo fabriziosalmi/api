@@ -28,20 +28,11 @@
 </head>
 
 <body>
-<div id="urladd">
-      <table>
-        <caption>url add form</caption>
-        <th></th>
-        <form method="post" action="url.php">
-        <tr>
-          <td><input type="url" id="url" name="url" size="64" pattern="^(https:\/\/)+(.*)+$" required >
-          </td>
-        </tr>
-        <tr>
-          <td><input type="submit" name="submit" value="Add URL"></td>
-        </tr>
-        </form>
-        </table>
-      </div>
+  <div id="urladd">
+    <form method="post" action="url.php">
+      <p><input type="url" id="url" name="url" size="64" pattern="^(https:\/\/)+(.*)+$" required ></p>
+      <p><input type="submit" name="submit" value="Add URL"></p>
+    </form>
+  </div>
 </body>
 </html>
