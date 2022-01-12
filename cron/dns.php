@@ -1,16 +1,12 @@
 <?php
 require_once("../plugins/logging.php");
 // require_once("conf/security.php");
-
-echo "<pre>";
-
 require_once("../conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
-
 
 $stmt = $conn->prepare("SELECT url_id FROM monitor_link WHERE monitor_id = 2 AND status = 1;");
 $stmt->execute();

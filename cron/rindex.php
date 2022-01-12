@@ -1,14 +1,12 @@
 <?php
 require_once("../plugins/logging.php");
 // require_once("conf/security.php");
-
 require_once("../conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
-
 
 $sql_count_urls = "SELECT COUNT(id) FROM urls;";
 $result_0 = $conn->query($sql_count_urls);

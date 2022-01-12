@@ -11,7 +11,7 @@ $url = $_GET['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
-  echo("<br> $url is valid"); 
+  echo "<br> ".$url." is valid"; 
 } else { 
   die("<br> $url is invalid"); 
 } 
