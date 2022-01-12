@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 
 
-$sql_count_urls = "SELECT COUNT(id) FROM url;";
+$sql_count_urls = "SELECT COUNT(id) FROM urls;";
 $result_0 = $conn->query($sql_count_urls);
 $urls_count = $result_0->fetch_assoc()["COUNT(id)"];
 
