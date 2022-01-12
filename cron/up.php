@@ -23,7 +23,7 @@ print_r($array);
 
 foreach ($array as $url_id_to_monitor) {
 
-    $name = $mysqli->query("SSELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';")->fetch_object()->name; 
+    $name = $conn->query("SSELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';")->fetch_object()->name; 
     vae_dump($name);
     
 
