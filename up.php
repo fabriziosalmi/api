@@ -8,6 +8,7 @@ if (PHP_SAPI === 'cli')
 } 
 
 $url = $_GET['url'];
+// test
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
