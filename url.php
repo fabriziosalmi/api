@@ -3,14 +3,20 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+var_dump($_POST);
+var_dump($_SERVER);
+
 $url = $_POST['url'];
+
+//url sanitizer 
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
-if (filter_var($url, FILTER_VALIDATE_URL)) {
-    echo("$url is a valid URL <br>");
-} else {
-    die("$url is not a valid URL <br>");
-}
+//url validator 
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
+  echo("<br> $url is valid"); 
+} else { 
+  echo("<br> $url is invalid"); 
+} 
 
 $parsed_url = parse_url($url);
 
