@@ -3,7 +3,10 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-
+if (PHP_SAPI === 'cli')
+{
+    parse_str(implode('&', array_slice($argv, 1)), $_GET);
+} 
 
 $url = $_GET['url'];
 
