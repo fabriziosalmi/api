@@ -48,10 +48,10 @@ if (isset($parsed_url["fragment"])) {
 $origin = $_SERVER["HTTP_ORIGIN"];
 $referrer = $_SERVER["HTTP_REFERER"];
 
-if ( $origin == $url) { 
-    echo("<br> $origin is valid ORIGIN for $url"); 
+if ( $origin == "https://charts.rivoluzioneinformatica.org") { 
+    echo("<br> $origin is valid ORIGIN"); 
 } else { 
-    echo("<br> $origin is invalid ORIGIN for $url");
+    echo("<br> $origin is invalid ORIGIN");
     die("<br> error: origin $origin url $url");
 } 
 
