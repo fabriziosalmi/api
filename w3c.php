@@ -23,10 +23,9 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 
 } 
 
-require_once("w3c.class.php");
 $w3c = new W3cValidate($url);
-$w3c_valid = $w3c->getValidation()
-echo "W3C " . $w3c_valid;
+$w3c_valid = $w3c->getValidation();
+echo "W3C ".$w3c_valid;
 
 if ( $w3c_valid = "-1") { 
   print_r("score 0");
