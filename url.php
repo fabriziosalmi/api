@@ -49,9 +49,9 @@ $origin = $_SERVER["HTTP_ORIGIN"];
 $referrer = $_SERVER["HTTP_REFERER"];
 
 if ( $origin == $url) { 
-    echo("<br> $origin is valid ORIGIN"); 
+    echo("<br> $origin is valid ORIGIN for $url"); 
 } else { 
-    echo("<br> $origin is invalid ORIGIN");
+    echo("<br> $origin is invalid ORIGIN for $url");
     die("<br> error: origin $origin url $url");
 } 
 
