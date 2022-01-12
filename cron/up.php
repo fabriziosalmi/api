@@ -23,8 +23,18 @@ print_r($array);
 
 foreach ($array as $url_id_to_monitor) {
 
-    $name = $conn->query("SELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';"); 
-    var_dump($name);
+    $sql_url = "SELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';"; 
+    $result = $conn->query($sql_url);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo $row["url"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+
     
 
     die();
