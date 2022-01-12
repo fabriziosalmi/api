@@ -60,11 +60,4 @@ if ($conn->query($sql) === TRUE) {
 mysqli_close($conn);
 
 
-
-
-$w3c = new W3cValidate("http://www.hashbangcode.com");
-echo $w3c->getValidation();
-
-
-
 ?>
