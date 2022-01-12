@@ -23,7 +23,7 @@ print_r($array);
 
 foreach ($array as $url_id_to_monitor) {
 
-    $sql_url = "SELECT url FROM urls WHERE url_id = '".$url_id_to_monitor."';"; 
+    $sql_url = "SELECT url FROM urls WHERE url_id = ".$url_id_to_monitor.";"; 
     $result1 = $conn->query($sql_url);
     var_dump($result1);
     $row1 = $result1->fetch_assoc();
