@@ -29,17 +29,8 @@ if ($conn->connect_error) {
 
 $sql = "SELECT id FROM urls WHERE url = \"$url\";";
 $result = $conn->query($sql);
-
 $url_id = $result->fetch_assoc()["id"];
-var_dump($url_id);
-echo $url_id;
 
-
-die();
-var_dump($result->fetch_assoc()["id"]);
-
-$row = $result->fetch_assoc();
-$url_id = $row["id"];
 
 $sql_param = "SELECT score FROM checks WHERE url_id = ".$url_id." AND param_id = 1 ORDER BY id DESC LIMIT 1;";
 $result = $conn->query($sql_param);
