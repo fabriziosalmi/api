@@ -1,4 +1,7 @@
 <?php
+require_once("conf/sentry.php");
+
+
 /**
  * W3cValidate
  * 
