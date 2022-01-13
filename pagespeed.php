@@ -22,7 +22,6 @@ if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
 
 } 
 
-
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -30,7 +29,7 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM url WHERE url = \"$url\";";
+$sql = "SELECT id, url FROM urls WHERE url = \"$url\";";
 $row = $conn->query($sql)->fetch_assoc();
 $url_id = $row["id"];
 $url = $row["url"];
