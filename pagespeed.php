@@ -14,11 +14,11 @@ $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
 
-  echo "<br> ".$url." is valid"; 
+  echo "<p>".$url." is valid</p>"; 
 
 } else { 
 
-  die("<br> $url is invalid"); 
+  die("<p> $url is invalid</p>"); 
 
 } 
 
@@ -37,7 +37,7 @@ $url = $row["url"];
 set_time_limit(60);
 $pagespeed_score = exec("/usr/local/bin/psi ".$url." | grep Performance | awk '{print $2}'");
 
-$sql1 = "INSERT INTO checks (url_id, monitor_id, score) VALUES ('$url_id', '4', '".$pagespeed_score."')";
+$sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('$url_id', '4', '".$pagespeed_score."', '1')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully - ".$sql." ";
