@@ -1,14 +1,9 @@
 <?php
 require_once("../conf/database.php");
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-}
-
 $stmt = $conn->prepare("SELECT url_id FROM monitor_link WHERE monitor_id = 7 AND status = 1;");
-$stmt->execute();
-$array = [];
+$stmt->execute(); $array = [];
+
 foreach ($stmt->get_result() as $row)
 {
     $array[] = $row['url_id'];
