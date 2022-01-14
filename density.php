@@ -37,18 +37,18 @@ $left_pop = $max_pop / $pop;
 $score_left_pop = 100 - $left_pop;
 $time_scores["left"] = $score_left_pop;
 
+
 // random stuff
-$min=1; $max=10;
-$rand1 = rand($min,$max); 
-$rand2 = rand($min,$max); 
-$rand3 = rand($min,$max); 
-$rand4 = rand($min,$max); 
-$rand5 = rand($min,$max); 
-$rand6 = rand($min,$max); 
-$rand7 = rand($min,$max); 
-$rand8 = rand($min,$max); 
-$rand9 = rand($min,$max); 
-$rand10 = rand($min,$max); 
+$rand1 = random_int(1,10); 
+$rand2 = random_int(1,10);
+$rand3 = random_int(1,10);
+$rand4 = random_int(1,10);
+$rand5 = random_int(1,10);
+$rand6 = random_int(1,10);
+$rand7 = random_int(1,10);
+$rand8 = random_int(1,10);
+$rand9 = random_int(1,10);
+$rand10 = random_int(1,10);
 $random = $rand1 + $rand2 + $rand3 + $rand4 + $rand5 + $rand6 + $rand7 + $rand8 + $rand9 + $rand10;
 $time_scores["random"] = $random;
 
