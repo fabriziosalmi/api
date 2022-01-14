@@ -1,4 +1,6 @@
 <?php
-// require_once("conf/sentry.php");
+require_once("functions.php");
 
-require_once("conf/security.php");
+if ( score_check($score, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 

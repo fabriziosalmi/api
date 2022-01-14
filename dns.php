@@ -140,6 +140,13 @@ if ( $namelookup_time > "8" ) { $score_namelookup = 2; }
 if ( $namelookup_time > "8.5" ) { $score_namelookup = 1; }
 if ( $namelookup_time > "9" ) { $score_namelookup = 0; }
 
+// check score
+require_once("functions.php");
+
+if ( score_check($score_namelookup, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 
+
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);

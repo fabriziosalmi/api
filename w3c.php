@@ -38,6 +38,13 @@ if ( $w3c_valid = "0") {
   $w3c_score = 100;
 }
 
+// check score
+require_once("functions.php");
+
+if ( score_check($w3c_score, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 
+
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);

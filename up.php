@@ -54,6 +54,13 @@ if ( $httpcode == "502" ) { $score_httpcode = 1; }
 if ( $httpcode == "503" ) { $score_httpcode = 1; }
 if ( $httpcode == "504" ) { $score_httpcode = 1; }
 
+// check score
+require_once("functions.php");
+
+if ( score_check($score_httpcode, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 
+
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);

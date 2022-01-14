@@ -56,6 +56,13 @@ $docker_out = explode(" /", $docker_out);
 $docker_out = $docker_out[0];
 $litespeed_score = $docker_out;
 
+// check score
+require_once("functions.php");
+
+if ( score_check($litespeed_score, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 
+
 // save score
 require_once("conf/database.php");
 

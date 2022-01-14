@@ -74,6 +74,13 @@ $lighthouse_sum = $performance + $accessibility + $bestpractices + $seo + $pwa;
 $lighthouse_scores = 5;
 $lighthouse_score = $lighthouse_sum / $lighthouse_scores;
 
+// check score
+require_once("functions.php");
+
+if ( score_check($lighthouse_score, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 
+
 // save score
 require_once("conf/database.php");
 

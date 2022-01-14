@@ -117,6 +117,13 @@ curl_close($ch);
 $curl_sum = $csp + $hsts + $xcto + $expire + $xfo + $cache + $acao + $setc + $xxss + $cc;
 $curl_score = $curl_sum * 10;
 
+// check score
+require_once("functions.php");
+
+if ( score_check($curl_score, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 
+
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);

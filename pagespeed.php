@@ -37,6 +37,13 @@ $url = $row["url"];
 set_time_limit(60);
 $pagespeed_score = exec("/usr/local/bin/psi ".$url." | grep Performance | awk '{print $2}'");
 
+// check score
+require_once("functions.php");
+
+if ( score_check($pagespeed_score, 0, 100) === FALSE ) {
+    die( "error: exiting.." );
+} 
+
 $sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('$url_id', '4', '".$pagespeed_score."', '1')";
 
 if ($conn->query($sql) === TRUE) {
