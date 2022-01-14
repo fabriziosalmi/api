@@ -1,28 +1,13 @@
 <?php
-// require_once("conf/sentry.php");
+
 ini_set('max_execution_time', 60);
 
-
-if (PHP_SAPI === 'cli')
-
-{
-
-    parse_str(implode('&', array_slice($argv, 1)), $_GET);
-
-} 
+if (PHP_SAPI === 'cli') { parse_str(implode('&', array_slice($argv, 1)), $_GET); } 
 
 $url = $_GET['url'];
 $url = filter_var($url, FILTER_SANITIZE_URL);
 
-if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
-
-  echo "<br> ".$url." is valid"; 
-
-} else { 
-
-  die("<br> $url is invalid"); 
-
-} 
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) { echo "<br> ".$url." is valid"; } else { die("<br> $url is invalid"); } 
 
 /**
  * Determines if $number is between $min and $max
