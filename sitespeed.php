@@ -1,0 +1,82 @@
+<?php
+// require_once("conf/sentry.php");
+ini_set('max_execution_time', 60);
+
+
+if (PHP_SAPI === 'cli')
+
+{
+
+    parse_str(implode('&', array_slice($argv, 1)), $_GET);
+
+} 
+
+$url = $_GET['url'];
+$url = filter_var($url, FILTER_SANITIZE_URL);
+
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
+
+  echo "<br> ".$url." is valid"; 
+
+} else { 
+
+  die("<br> $url is invalid"); 
+
+} 
+
+/**
+ * Determines if $number is between $min and $max
+ *
+ * @param  integer  $number     The number to test
+ * @param  integer  $min        The minimum value in the range
+ * @param  integer  $max        The maximum value in the range
+ * @param  boolean  $inclusive  Whether the range should be inclusive or not
+ * @return boolean              Whether the number was in the range
+ */
+function in_range($number, $min, $max, $inclusive = FALSE)
+{
+    if (is_int($number) && is_int($min) && is_int($max))
+    {
+        return $inclusive
+            ? ($number >= $min && $number <= $max)
+            : ($number > $min && $number < $max) ;
+    }
+
+    return FALSE;
+}
+
+
+
+// litespeed
+$litespeed_docker_cmd = "docker run --rm -v \"$(pwd)\":/sitespeed.io sitespeedio/sitespeed.io -n1 --summary ".$url." | tail -n1 | sed -r 's/\x1B\[(;?[0-9]{1,3})+[mGK]//g'";
+$docker_out = exec($litespeed_docker_cmd);
+$docker_out = explode("Coach Overall Score:", $docker_out);
+$docker_out = $docker_out[1];
+$docker_out = explode(" /", $docker_out);
+$docker_out = $docker_out[0];
+$litespeed_score = $docker_out;
+
+// save score
+require_once("conf/database.php");
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id FROM urls WHERE url = '".$url."' ;";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$url_id = $row["id"];
+  
+$sql = "INSERT INTO checks (url_id, monitor_id, score, status) VALUES ('".$url_id."', '7', '".$litespeed_score ."', '1');";
+
+if ($conn->query($sql) === TRUE) {
+    echo "<br>OK " .$sql;
+  } else {
+    echo "UPDATE ERROR - " . $sql . " - " . $conn->error. "<br>";
+  }
+
+mysqli_close($conn);
+
+?>
