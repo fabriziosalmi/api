@@ -9,27 +9,6 @@ $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { echo "<br> ".$url." is valid"; } else { die("<br> $url is invalid"); } 
 
-/**
- * Determines if $number is between $min and $max
- *
- * @param  integer  $number     The number to test
- * @param  integer  $min        The minimum value in the range
- * @param  integer  $max        The maximum value in the range
- * @param  boolean  $inclusive  Whether the range should be inclusive or not
- * @return boolean              Whether the number was in the range
- */
-function in_range($number, $min, $max, $inclusive = FALSE)
-{
-    if (is_int($number) && is_int($min) && is_int($max))
-    {
-        return $inclusive
-            ? ($number >= $min && $number <= $max)
-            : ($number > $min && $number < $max) ;
-    }
-
-    return FALSE;
-}
-
 // lighthouse
 $domain = str_replace("https://", "", $url);
 $docker_cmd = "docker run -it -v /var/www/charts.rivoluzioneinformatica.org/api/reports:/home/chrome/reports pernodricard/lighthouse-cli ".$url." --quiet --headless --output json --output-path /home/chrome/reports/".$domain.".json";

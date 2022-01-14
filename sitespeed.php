@@ -9,29 +9,6 @@ $url = filter_var($url, FILTER_SANITIZE_URL);
 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) { echo "<br> ".$url." is valid"; } else { die("<br> $url is invalid"); } 
 
-/**
- * Determines if $number is between $min and $max
- *
- * @param  integer  $number     The number to test
- * @param  integer  $min        The minimum value in the range
- * @param  integer  $max        The maximum value in the range
- * @param  boolean  $inclusive  Whether the range should be inclusive or not
- * @return boolean              Whether the number was in the range
- */
-function in_range($number, $min, $max, $inclusive = FALSE)
-{
-    if (is_int($number) && is_int($min) && is_int($max))
-    {
-        return $inclusive
-            ? ($number >= $min && $number <= $max)
-            : ($number > $min && $number < $max) ;
-    }
-
-    return FALSE;
-}
-
-
-
 // litespeed
 $litespeed_docker_cmd = "docker run --rm -v \"$(pwd)\":/sitespeed.io sitespeedio/sitespeed.io -n1 --summary ".$url." | tail -n1 | sed -r 's/\x1B\[(;?[0-9]{1,3})+[mGK]//g'";
 $docker_out = exec($litespeed_docker_cmd);
