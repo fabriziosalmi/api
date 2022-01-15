@@ -2,36 +2,15 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ERROR);
-echo "<pre>";
 
+if (PHP_SAPI === 'cli') { parse_str(implode('&', array_slice($argv, 1)), $_GET); } 
+$url = $_GET['url']; $url = filter_var($url, FILTER_SANITIZE_URL);
 
-// require_once("conf/sentry.php");
-
-if (PHP_SAPI === 'cli')
-
-{
-
-    parse_str(implode('&', array_slice($argv, 1)), $_GET);
-
-} 
-
-$url = $_GET['url'];
-$url = filter_var($url, FILTER_SANITIZE_URL);
-
-if (!filter_var($url, FILTER_VALIDATE_URL) === false) { 
-
-  // echo "<p>valid url</p>"; 
-
-} else { 
-
-  die("<br> $url is invalid"); 
-
-} 
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) { echo "<p>valid url</p>"; } else { die("<br> $url is invalid"); } 
 
 $ch = curl_init($url);
-
-curl_setopt($ch, CURLOPT_HEADER, true);    // we want headers
-curl_setopt($ch, CURLOPT_NOBODY, true);    // we don't need body
+curl_setopt($ch, CURLOPT_HEADER, true);
+curl_setopt($ch, CURLOPT_NOBODY, true);    
 curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
 curl_setopt($ch, CURLOPT_TIMEOUT,10);
 
@@ -51,13 +30,8 @@ function get_headers_from_curl_response($headerContent)
 
         foreach (explode("\r\n", $arrRequests[$index]) as $i => $line)
         {
-            if ($i === 0)
-                $headers[$index]['http_code'] = $line;
-            else
-            {
-                list ($key, $value) = explode(': ', $line);
-                $headers[$index][$key] = $value;
-            }
+            if ($i === 0) { $headers[$index]['http_code'] = $line; }             
+            else { list ($key, $value) = explode(': ', $line); $headers[$index][$key] = $value; }
         }
     }
 
@@ -120,16 +94,12 @@ $curl_score = $curl_sum * 10;
 // check score
 require_once("functions.php");
 
-if ( score_check($curl_score, 0, 100) === FALSE ) {
-    die( "error: exiting.." );
-} 
+if ( score_check($curl_score, 0, 100) === FALSE ) { die( "error: exiting.." ); } 
 
 require_once("conf/database.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-}
+if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
 
 $sql = "SELECT id FROM urls WHERE url = '".$url."' ;";
 $result = $conn->query($sql);
