@@ -19,10 +19,13 @@ This is a self (but-not-restricted-to-myself) learning project.
 
 ## monitoring
 
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=fabriziosalmi_api)
+
 - [sonarcloud](https://sonarcloud.io/project/overview?id=fabriziosalmi_api) (public free access)
 - sentry.io
 - Cloudflare 
 - GitHub
+
 
 ## source code
 Don't blame me for weak coding, I'm not a coder. I'll try to make it at my best and I'm open to PR of course.
