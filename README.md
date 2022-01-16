@@ -31,8 +31,42 @@ CREATE TABLE `checks` (
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47186 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `monitor_link` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `url_id` int(11) NOT NULL,
+  `monitor_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `monitors` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `rindex` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `score` float NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2906 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `scores` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `url_id` int(11) NOT NULL,
+  `score` float NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32239 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `urls` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) NOT NULL DEFAULT '',
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `url` (`url`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 ```
+
 - you need a php-fpm powered vhost on nginx
 - download the code and have fun :D
 
@@ -46,6 +80,9 @@ CREATE TABLE `checks` (
 - Cloudflare 
 - GitHub
 
+## to do
+
+Everything, from hardening vps, database, php, nginx. docker, iptables, greyssh etcetc to pretty code, comments and commit messages <3
 
 ## source code
 Don't blame me for weak coding, I'm not a coder. I'll try to make it at my best and I'm open to PR of course.
