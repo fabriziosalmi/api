@@ -4,11 +4,14 @@ This is a self (but-not-restricted-to-myself) learning project.
 
 ## technologies
 
-- simple charts rendering
-- html, css, php
+- charts rendering
+- html, css, js
 - nginx, node, npm, php-fpm, mysql
 - docker
 - bash, crontab
+
+## categories
+
 - scaling, performance, security
 - data sources analisys, gathering, indexing
 - 3rd party tools use
