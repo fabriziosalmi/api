@@ -13,9 +13,29 @@ This is a self (but-not-restricted-to-myself) learning project.
 - data sources analisys, gathering, indexing
 - 3rd party tools use
 
-## playground
+## let's play
 
-- a cheap Linux VPS is enough to start
+- a cheap Linux VPS is enough to start otherwise follow the white rabbit
+
+_apt based whiterabbit_
+
+- install nginx, php-fpm, a mysql compatible server, docker, python, curl
+- create a mysql database 
+
+```
+CREATE TABLE `checks` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `url_id` int(11) NOT NULL,
+  `monitor_id` int(11) NOT NULL,
+  `score` float NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47186 DEFAULT CHARSET=utf8mb4;
+```
+- you need a php-fpm powered vhost on nginx
+- download the code and have fun :D
+
 
 ## monitoring
 
