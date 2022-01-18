@@ -23,7 +23,7 @@ This is a self (but-not-restricted-to-myself) learning project.
 _apt based whiterabbit_
 
 - install nginx, php-fpm, a mysql compatible server, docker, python, curl
-- create a mysql database 
+- create a mysql database (utf8mb4) with the following tables:
 
 ```
 CREATE TABLE `checks` (
